@@ -17,4 +17,8 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::get('/kelola-user', function () {
+    return view('kelola-user');
+});
+
 
