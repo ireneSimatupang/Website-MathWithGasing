@@ -41,6 +41,8 @@ Route::get('/pencapaian-siswa', function () {
     return view('pencapaian-siswa.kelola-pencapaian');
 });
 
+
+
 Route::get('/Tambahdata-materi', function () {
     return view('Tambahdata-materi');
 });
