@@ -11,13 +11,17 @@
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item active"><i class="fas fa-home"></i>&nbsp;Beranda</li>
-                        <li class="breadcrumb-item active" aria-current="page"><a href="#"><span class="iconify" data-icon="bxs:user-rectangle" data-height="20"></span> Kelola Materi</a></li>
-                        <li class="breadcrumb-item active" aria-current="page"><a href="#"><span class="iconify" data-icon="bxs:user-rectangle" data-height="20"></span> Kelola Bagian Materi</a></li>
-                    </ol>
-                    <h2 class="mb-3 mt-4 fw-bold mx-1 mb-3 mt-1">KELOLA MATERI</h2>
+                    <div class="breadcrumb rounded-pill mb-4 bg-light" style="color: RGBA(107,107,107,0.75); background-color: rgbA">
+                        <div class="item px-3">
+                            <i class="fas fa-home pt-1"></i>&nbsp;
+                            <a href="/" style="text-decoration: none; color: inherit;">Beranda /</a>
+                            <a href="/kelola-materi" style="text-decoration: none; color: inherit;">Kelola Materi /</a>
+                            <a href="/kelola-materi-bagian" style="text-decoration: none; color: inherit;">Penjumlahan /</a>
+                            <a href="/kelola-materi-level" style="text-decoration: none; color: inherit;">Penjumlahan Bagian 1</a>
+                        </div>
+                    </div>
 
+                    <h2 class="pb-3">Kelola Materi</h2>
 
                     <h5 class="mb-3 mt-4  mx-1 mb-3 mt-1"> Kelola Pre-Test</h5>
                    
@@ -48,8 +52,8 @@
                                 </tfoot>
                                 <tbody>
                                     <tr>
-                                        <td>Tiger Nixon</td>
-                                        <td>System Architect</td>
+                                        <td>1</td>
+                                        <td>Pretest 1</td>
                                         <td class="text-center">
                                             <div class="d-flex justify-content-center">
                                                 <a href="#" class="btn btn-success">Detail</a> &nbsp;
@@ -98,8 +102,8 @@
                                 </tfoot>
                                 <tbody>
                                     <tr>
-                                        <td>Tiger Nixon</td>
-                                        <td>System Architect</td>
+                                        <td>1</td>
+                                        <td>Video 1</td>
                                         <td class="text-center">
                                             <div class="d-flex justify-content-center">
                                                 <a href="#" class="btn btn-success">Detail</a> &nbsp;
@@ -146,8 +150,8 @@
                                 </tfoot>
                                 <tbody>
                                     <tr>
-                                        <td>Tiger Nixon</td>
-                                        <td>System Architect</td>
+                                        <td>1</td>
+                                        <td>Post-test1</td>
                                         <td class="text-center">
                                             <div class="d-flex justify-content-center">
                                                 <a href="#" class="btn btn-success">Detail</a> &nbsp;
@@ -166,18 +170,7 @@
                     </div>
                 </div>
             </main>
-            <footer class="py-4 bg-light mt-auto">
-                <div class="container-fluid px-4">
-                    <div class="d-flex align-items-center justify-content-between small">
-                        <div class="text-muted">Copyright &copy; Math With Gasing</div>
-                        <div>
-                            <a href="#">Privacy Policy</a>
-                            &middot;
-                            <a href="#">Terms &amp; Conditions</a>
-                        </div>
-                    </div>
-                </div>
-            </footer>
+            @include('layouts.footer')
         </div>
     </div>
         

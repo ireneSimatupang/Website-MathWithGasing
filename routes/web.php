@@ -14,31 +14,31 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('beranda');
 });
 
-Route::get('/kelola-user', function () {
-    return view('kelola-user');
+Route::get('/akun-siswa', function () {
+    return view('akun-siswa.akun-siswa');
 });
 
-Route::get('/kelola-admin', function () {
-    return view('kelola-admin');
+Route::get('/akun-admin', function () {
+    return view('akun-admin.akun-admin');
 });
 
 Route::get('/kelola-materi', function () {
-    return view('kelola-materi');
+    return view('kelola-materi.kelola-materi');
 });
 
 Route::get('/kelola-materi-bagian', function () {
-    return view('kelola-materi-bagian');
+    return view('kelola-materi.kelola-materi-bagian');
 });
 
 Route::get('/kelola-materi-level', function () {
-    return view('kelola-materi-level');
+    return view('kelola-materi.kelola-materi-level');
 });
 
-Route::get('/kelola-pencapaian', function () {
-    return view('kelola-pencapaian');
+Route::get('/pencapaian-siswa', function () {
+    return view('pencapaian-siswa.kelola-pencapaian');
 });
 
 Route::get('/Tambahdata-materi', function () {
