@@ -15,15 +15,15 @@
                 </a>
                 <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="#"><i class="fas fa-user-alt"></i>&nbsp;&nbsp;AKUN SISWA</a>
-                        <a class="nav-link" href="#"><i class="fas fa-user-shield"></i>&nbsp;AKUN ADMIN</a>
+                        <a class="nav-link" href="/kelola-user"><i class="fas fa-user-alt"></i>&nbsp;&nbsp;AKUN SISWA</a>
+                        <a class="nav-link" href="/kelola-admin"><i class="fas fa-user-shield"></i>&nbsp;AKUN ADMIN</a>
                     </nav>
                 </div>
-                <a class="nav-link" href="charts.html">
+                <a class="nav-link" href="/kelola-materi">
                     <div class="sb-nav-link-icon"><i class="fas fa-book"></i></div>
                     MENGELOLA MATERI
                 </a>
-                <a class="nav-link" href="tables.html">
+                <a class="nav-link" href="/kelola-pencapaian">
                     <div class="sb-nav-link-icon"><i class="fas fa-chart-line"></i></div>
                     PENCAPAIAN SISWA
                 </a>
