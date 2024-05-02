@@ -4,6 +4,42 @@
 
 @include('layouts.top-navbar')
 
+
+@section('scripts')
+<script>
+    function generatePDF(user_id) {
+        console.log("User ID : "+ user_id);
+
+        $.ajax({
+            type: 'GET',
+            url: '/generate-pdf/' + user_id,
+            success: function(response) {
+                alert('PDF berhasil dibuat.');
+            },
+            error: function(xhr, status, error) {
+                console.error(xhr.responseText);
+            }
+        });
+    }
+
+    function sendEmail(email) {
+        $.ajax({
+            type: 'POST',
+            url: '/send-email',
+            data: {
+                email: email
+            },
+            success: function(response) {
+                alert('Email berhasil dikirim.');
+            },
+            error: function(xhr, status, error) {
+                console.error(xhr.responseText);
+            }
+        });
+    }
+</script>
+@endsection
+
 <div id="layoutSidenav">
 
     @include('layouts.side-navbar')
@@ -31,7 +67,7 @@
                                     <th>No</th>
                                     <th>Nama</th>
                                     <th>Email Orangtua</th>
-                                    <th>Usia</th>
+                                    <th>Jenis Kelamin</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -40,50 +76,42 @@
                                     <th>No</th>
                                     <th>Nama</th>
                                     <th>Email Orangtua</th>
-                                    <th>Usia</th>
+                                    <th>Jenis Kelamin</th>
                                     <th>Aksi</th>
                                 </tr>
                             </tfoot>
                             <tbody>
+                            @if(isset($users) && $users->count() > 0)
+                                @foreach($users as $index => $user)
                                 <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>nixon12313@gmail.com</td>
-                                    <td>12</td>
+                                    <td>{{ $user->id_user }}</td>
+                                    <td>{{ $user->name }}</td>
+                                    <td>{{ $user->email }}</td>
+                                    <td>{{ $user->gender }}</td>
                                     <td> <!-- Kolom untuk toggle button -->
                                         <!-- Toggle button -->
-                                        <div class="custom-control custom-switch text-center">
-                                            <input type="checkbox" class="custom-control-input toggle-switch" id="toggle-switch1">
-                                            <label class="custom-control-label" for="toggle-switch1">On/Off</label>
-                                        </div>
+                                        <div class="d-flex">
+                                            <div class="custom-control custom-switch text-center pt-2">
+                                                <input type="checkbox" class="custom-control-input toggle-switch" id="toggle-switch1">
+                                                <label class="custom-control-label" for="toggle-switch1">On/Off</label>
+                                            </div>
+                                                <div class="tambah-data pl-3">
+                                                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                Detail </button>
+                                                <button type="button" class="btn btn-primary" onclick="generatePDF({{ $user->id_user }})">Generate PDF</button>
+                                                <button type="button" class="btn btn-success" onclick="sendEmail('{{ $user->email }}')">Kirim Nilai</button>
+                                            </div>
+                                        </div>                               
                                     </td>
+
                                 </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>nixon12313@gmail.com</td>
-                                    <td>12</td>
-                                    <td> <!-- Kolom untuk toggle button -->
-                                        <!-- Toggle button -->
-                                        <div class="custom-control custom-switch text-center">
-                                            <input type="checkbox" class="custom-control-input toggle-switch" id="toggle-switch1">
-                                            <label class="custom-control-label" for="toggle-switch1">On/Off</label>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>nixon12313@gmail.com</td>
-                                    <td>12</td>
-                                    <td> <!-- Kolom untuk toggle button -->
-                                        <!-- Toggle button -->
-                                        <div class="custom-control custom-switch text-center">
-                                            <input type="checkbox" class="custom-control-input toggle-switch" id="toggle-switch1">
-                                            <label class="custom-control-label" for="toggle-switch1">On/Off</label>
-                                        </div>
-                                    </td>
-                                </tr>
+                                @endforeach
+                                @else
+                                    <tr>
+                                        <td colspan="5">Tidak ada data pengguna.</td>
+                                    </tr>
+                                @endif
+                                <!--  -->
                             </tbody>
                         </table>
                     </div>
@@ -97,3 +125,66 @@
 </div>
 
 @endsection
+
+
+<!-- // Modal detail akun siswa -->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+      <div class="modal-title" id="exampleModalLabel">
+      <h3>Detail Siswa</h3>
+      
+      </div>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      
+      <div class="modal-body">
+      <form action="" method="POST">
+            <div class="row py-1">
+                <div class="col-md-4">
+                    <label for="nama">Nama</label>
+                </div>
+                <div class="col-md-8">
+                <p>{{ $user->name }}</p>
+            </div>
+            </div>
+            <div class="row py-1">
+                <div class="col-md-4">
+                    <label for="email">Email Orangtua</label>
+                </div>
+                <div class="col-md-8">
+                <p>{{ $user->email }}</p>
+                </div>
+            </div>
+            <div class="row py-1">
+                <div class="col-md-4 ">
+                    <label for="gender">Jenis Kelamin</label>
+                </div>
+                <div class="col-md-8">
+                <p>{{ $user->gender }}</p>
+                </div>
+            </div>
+            <div class="row py-1">
+                <div class="col-md-4 ">
+                    <label for="pretest">Total Pre-Test</label>
+                </div>
+                <div class="col-md-8">
+                <p>{{$user->total_pretest ?? '-' }}</p>
+                </div>
+            </div>
+            <div class="row py-1">
+                <div class="col-md-4 ">
+                    <label for="posttest">Total Post-Test</label>
+                </div>
+                <div class="col-md-8">
+                    <p>{{ $user->total_score ?? '-' }}</p>
+                </div>
+            </div>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

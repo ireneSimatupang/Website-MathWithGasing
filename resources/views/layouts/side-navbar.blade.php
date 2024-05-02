@@ -27,6 +27,10 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-chart-line"></i></div>
                     PENCAPAIAN SISWA
                 </a>
+                <a class="nav-link" href="/lencana-siswa">
+                    <div class="sb-nav-link-icon"><i class="fas fa-chart-line"></i></div>
+                    MENGELOLA LENCANA
+                </a>
             </div>
         </div>
         <div class="sb-sidenav-footer">

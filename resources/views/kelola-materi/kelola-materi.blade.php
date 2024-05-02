@@ -22,7 +22,8 @@
                 <h2 class="pb-3">Kelola Materi</h2>
 
                 <div class="tambah-data pb-3">
-                    <a href="#" class="btn btn-primary">Tambah Data</a>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Tambah Data </button>
                 </div>
 
                 <div class="card mb-4">
@@ -50,7 +51,7 @@
                                     <td class="text-center">
                                         <div class="d-flex justify-content-center">
                                             <a href="/kelola-materi-bagian" class="btn btn-success">Buka</a> &nbsp;&nbsp;
-                                            <a href="#" class="btn btn-warning">Ubah</a> &nbsp;&nbsp;
+                                            <a href="#" class="btn btn-warning text-light"  data-bs-toggle="modal" data-bs-target="#exampleModal2">Ubah</a> &nbsp;&nbsp;
                                             <a data-id="#" class="btn btn-danger delete" data-kode="#" href="#">Hapus</a> &nbsp;&nbsp;
                                         </div>
                                     </td>
@@ -69,3 +70,96 @@
 </div>
 
 @endsection
+
+
+
+<!-- // Modal Tambah Materi -->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLabel">Tambah Topik Materi</h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <form action="" method="POST">
+            <div class="row">
+                <div class="col-md-4">
+                    <label for="judul">Judul</label>
+                </div>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" name="judul">
+                </div>
+            </div>
+            <div class="row py-1">
+                <div class="col-md-4">
+                    <label for="deskripsi">Deskripsi</label>
+                </div>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" name="deskripsi">
+                </div>
+            </div>
+            <div class="row py-1">
+                <div class="col-md-4">
+                    <label for="dibuat">Dibuat oleh</label>
+                </div>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" name="dibuat">
+                </div>
+            </div>
+            <div class="d-flex justify-content-end py-3">
+                <button class="btn btn-success mx-3" type="submit">Simpan</button>
+                <button class="btn btn-danger" type="submit">Batal</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- // Modal Ubah Materi -->
+
+<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLabel">Ubah Topik Materi</h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <form action="" method="POST">
+            <div class="row">
+                <div class="col-md-4">
+                    <label for="judul">Judul</label>
+                </div>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" name="judul" value="Penjumlahan">
+                </div>
+            </div>
+            <div class="row py-1">
+                <div class="col-md-4">
+                    <label for="deskripsi">Deskripsi</label>
+                </div>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" name="deskripsi" value="Penjumlahan">
+                </div>
+            </div>
+            <div class="row py-1">
+                <div class="col-md-4">
+                    <label for="dibuat">Dibuat oleh</label>
+                </div>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" name="dibuat" value="Bronco">
+                </div>
+            </div>
+            <div class="d-flex justify-content-end py-3">
+                <button class="btn btn-success mx-3" type="submit">Simpan</button>
+                <button class="btn btn-danger" type="submit">Batal</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

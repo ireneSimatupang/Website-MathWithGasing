@@ -15,19 +15,13 @@
                     <div class="item px-3">
                         <i class="fas fa-home pt-1"></i>&nbsp;
                         <a href="/" style="text-decoration: none; color: inherit;">Beranda /</a>
-                        <a href="/kelola-materi" style="text-decoration: none; color: inherit;">Kelola Materi /</a>
-                        <a href="/kelola-materi-bagian" style="text-decoration: none; color: inherit;">Penjumlahan</a>
+                        <a href="/lencana-siswa" style="text-decoration: none; color: inherit;">Lencana Siswa</a>
                     </div>
                 </div>
 
-                <h2 class="pb-3">Kelola Materi</h2>
+                <h2 class="pb-3">Kelola Lencana</h2>
 
-                <div class="tambah-data pb-3 mt-2 fw-bold mx-1 mb-3 mt-1 justify-content-start">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Tambah Data </button>
-                    <a href="/KelolaPengguna/KelolaUnit" class="btn btn-secondary mx-4">Kelola Level Bonus</a>
-
-                </div>
+            
 
                 <div class="card mb-4">
 
@@ -48,14 +42,15 @@
                                 </tr>
                             </tfoot>
                             <tbody>
+                            @if(isset($materis) && $materis->count() > 0)
+                                @foreach($materis as $index => $materi)
                                 <tr>
-                                    <td>1</td>
-                                    <td>Penjumlahan Bagian 1</td>
+                                    <td>{{ $index + 1 }}</td>
+                                    <td>{{$user->title}}</td>
                                     <td class="text-center">
                                         <div class="d-flex justify-content-center">
-                                            <a href="/kelola-materi-level" class="btn btn-success">Buka</a> &nbsp;&nbsp;
-                                            <a href="#" class="btn btn-warning text-light"  data-bs-toggle="modal" data-bs-target="#exampleModal2">Ubah</a> &nbsp;&nbsp;
-                                            <a data-id="#" class="btn btn-danger delete" data-kode="#" href="#">Hapus</a> &nbsp;&nbsp;
+                                            <a href="/kelola-materi-bagian" class="btn btn-success">Buka</a> &nbsp;&nbsp;
+                                            
                                         </div>
                                     </td>
 
@@ -74,13 +69,15 @@
 
 @endsection
 
-<!-- // Modal Tambah Bagian Materi -->
+
+
+<!-- // Modal Tambah Materi -->
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h3 class="modal-title" id="exampleModalLabel">Tambah Topik Bagian Materi</h3>
+        <h3 class="modal-title" id="exampleModalLabel">Tambah Topik Materi</h3>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -119,13 +116,14 @@
   </div>
 </div>
 
+
 <!-- // Modal Ubah Materi -->
 
 <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h3 class="modal-title" id="exampleModalLabel">Ubah Topik Bagian Materi</h3>
+        <h3 class="modal-title" id="exampleModalLabel">Ubah Topik Materi</h3>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">

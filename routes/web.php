@@ -1,6 +1,10 @@
 <?php
 
+use App\Http\Controllers\ScorePostTestController;
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,9 +21,6 @@ Route::get('/', function () {
     return view('beranda');
 });
 
-Route::get('/akun-siswa', function () {
-    return view('akun-siswa.akun-siswa');
-});
 
 Route::get('/akun-admin', function () {
     return view('akun-admin.akun-admin');
@@ -27,6 +28,10 @@ Route::get('/akun-admin', function () {
 
 Route::get('/kelola-materi', function () {
     return view('kelola-materi.kelola-materi');
+});
+
+Route::get('/kelola-materi/tambah', function () {
+    return view('kelola-materi.tambah-materi');
 });
 
 Route::get('/kelola-materi-bagian', function () {
@@ -37,8 +42,9 @@ Route::get('/kelola-materi-level', function () {
     return view('kelola-materi.kelola-materi-level');
 });
 
-Route::get('/pencapaian-siswa', function () {
-    return view('pencapaian-siswa.kelola-pencapaian');
+
+Route::get('/lencana-siswa', function () {
+    return view('lencana-siswa.lencana-siswa');
 });
 
 
@@ -46,4 +52,20 @@ Route::get('/pencapaian-siswa', function () {
 Route::get('/Tambahdata-materi', function () {
     return view('Tambahdata-materi');
 });
+
+// routes/web.php
+
+Route::get('/akun-siswa', [UserController::class, 'manageStudents']);
+//Route::get('/akun-siswa', [UserController::class, 'pretest']);
+
+Route::get('/akun-admin', [AdminController::class, 'manageAdmin']);
+Route::get('/lencana-siswa', [AdminController::class, 'manageMateri']);
+
+Route::post('/approvedAdmin/{id}', [AdminController::class, 'approvedAdmin']);
+
+Route::get('/pencapaian-siswa', [ScorePostTestController::class, 'index']);
+
+Route::get('/generate-pdf/{user_id}', [UserController::class, 'generatePDF']);
+Route::post('/send-email', [UserController::class, 'sendEmail']);
+
 

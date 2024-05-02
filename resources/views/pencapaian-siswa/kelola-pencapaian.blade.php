@@ -22,37 +22,37 @@
 
                 <h2 class="pb-3">Pencapaian Siswa</h2>
 
-
-
                 <div class="card mb-4">
-
                     <div class="card-body">
                         <table id="datatablesSimple">
                             <thead>
                                 <tr>
                                     <th>No</th>
                                     <th>Nama</th>
-                                    <th>Materi</th>
-                                    <th>Nilai</th>
+                                    <th>Skor Post-test</th>
+                                    <th>Jumlah Lencana</th>
                                 </tr>
                             </thead>
                             <tfoot>
                                 <tr>
                                     <th>No</th>
                                     <th>Nama</th>
-                                    <th>Materi</th>
-                                    <th>Nilai</th>
+                                    <th>Skor Post-test</th>
+                                    <th>Jumlah Lencana</th>
                                 </tr>
                             </tfoot>
                             <tbody>
+
+                                @foreach($users as $index => $user)
+
+
                                 <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>100</td>
+                                    <td>{{ $index + 1 }}</td>
+                                    <td>{{ $user->name }}</td>
+                                    <td>{{ $user->total_score ?? '-' }}</td> <!-- Mengambil skor post-test dengan relasi -->
+                                    <td>{{ $user->jumlah_lencana }}</td>
                                 </tr>
-
-
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

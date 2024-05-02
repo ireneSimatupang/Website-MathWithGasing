@@ -47,48 +47,34 @@
                                 </tr>
                             </tfoot>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>System Architect</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>6247832428342</td>
-                                    <td>
-                                        <!-- Kolom untuk toggle button -->
-                                        <!-- Toggle button -->
-                                        <div class="custom-control custom-switch text-center">
-                                            <input type="checkbox" class="custom-control-input toggle-switch" id="toggle-switch1">
-                                            <label class="custom-control-label" for="toggle-switch1">On/Off</label>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>System Architect</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>6247832428342</td>
-                                    <td>
-                                        <!-- Kolom untuk toggle button -->
-                                        <!-- Toggle button -->
-                                        <div class="custom-control custom-switch text-center">
-                                            <input type="checkbox" class="custom-control-input toggle-switch" id="toggle-switch1">
-                                            <label class="custom-control-label" for="toggle-switch1">On/Off</label>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>System Architect</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>6247832428342</td>
-                                    <td>
-                                        <!-- Kolom untuk toggle button -->
-                                        <!-- Toggle button -->
-                                        <div class="custom-control custom-switch text-center">
-                                            <input type="checkbox" class="custom-control-input toggle-switch" id="toggle-switch1">
-                                            <label class="custom-control-label" for="toggle-switch1">On/Off</label>
-                                        </div>
-                                    </td>
-                                </tr>
+                            @if($regisAdmins->count() > 0)
+                                @foreach($regisAdmins as $admin)
+                           
+                            <tr>
+                            <td>{{ $loop->iteration }}</td>
+                                <td>{{ $admin->name }}</td>
+                                <td>{{ $admin->email }}</td>
+                                <td>{{ $admin->kontak }}</td>
+                                <td>
+                                    <!-- Kolom untuk toggle button -->
+                                    <!-- Toggle button -->
+                                    <div class="custom-control custom-switch text-center">
+                                        <input type="checkbox" class="custom-control-input toggle-switch" id="toggle-switch{{ $admin->id }}">
+                                        <label class="custom-control-label" for="toggle-switch{{ $admin->id }}">On/Off</label>
+                                    </div>
+                                </td>
+                            </tr>
+                            @endforeach
+                            @else
+                                    <tr>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                    </tr>
+                                @endif
+                                <!--  -->
 
                             </tbody>
                         </table>
@@ -124,19 +110,33 @@
                                 </tr>
                             </tfoot>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>System Architect</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>6247832428342</td>
-                                    <td class="text-center">
-                                        <div class="d-flex justify-content-center">
-                                            <a href="#" class="btn btn-success">Terima</a> &nbsp;
-                                            <a data-id="#" class="btn btn-danger delete" href="#">Tolak</a>
-                                        </div>
-                                    </td>
-
+                                @if($newAdmins->count() > 0 )
+                                @foreach($newAdmins as $admin)
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $admin->name }}</td>
+                                        <td>{{ $admin->email }}</td>
+                                        <td>{{ $admin->kontak }}</td>
+                                        <td class="text-center">
+                                            <div class="d-flex justify-content-center">
+                                                <form action="/approvedAdmin/{{$admin->id_penggunaWeb}}" method="POST">
+                                                <button type="submit"  class="btn btn-success">Terima</button>
+                                                </form> &nbsp;
+                                                <a data-id="#" class="btn btn-danger delete" href="#">Tolak</a>
+                                            </div>
+                                        </td>
                                 </tr>
+                                @endforeach
+                            @else
+                                    <tr>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                    </tr>
+                                @endif
+                                <!--  -->
 
                             </tbody>
                         </table>
