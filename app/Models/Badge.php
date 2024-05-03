@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Models\Materi;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -11,4 +12,14 @@ class Badge extends Model
     protected $table = 'badge';
     protected $primaryKey = 'id_badge';
     protected $fillable = ['image','explanation','id_penggunaWeb','id_materi','id_posttest'];
+
+    public function lencana() {
+        return $this->belongsTo(Lencana::class, 'id_LencanaPengguna');
+    }
+    public function badge() {
+        return $this->belongsTo(Badge::class, 'id_badge');
+    }
+    public function materi() {
+        return $this->belongsTo(Materi::class, 'id_materi');
+    }
 }

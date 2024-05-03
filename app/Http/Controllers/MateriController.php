@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Models\Materi;
-use Illuminate\Http\Request;
+use App\Models\Materi;
 
 class MateriController extends Controller
 {

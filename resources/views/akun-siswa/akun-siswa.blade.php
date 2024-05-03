@@ -98,7 +98,11 @@
                                                 <div class="tambah-data pl-3">
                                                 <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                                 Detail </button>
-                                                <button type="button" class="btn btn-primary" onclick="generatePDF({{ $user->id_user }})">Generate PDF</button>
+
+                                                <form enctype="multipart/form-data" action="/akun-siswa/exportPDF/{{ $user->id_user }}" method="post">
+                                                {{ csrf_field() }}
+                                                <button type="submit" class="btn btn-primary" onclick="this.form.target='_blank';return true;">Generate PDF</button>
+                                                </form>
                                                 <button type="button" class="btn btn-success" onclick="sendEmail('{{ $user->email }}')">Kirim Nilai</button>
                                             </div>
                                         </div>                               

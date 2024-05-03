@@ -16,7 +16,7 @@
                     <div class="item px-3">
                         <i class="fas fa-home pt-1"></i>&nbsp;
                         <a href="/" style="text-decoration: none; color: inherit;">Beranda /</a>
-                        <a href="//kelola-lencana" style="text-decoration: none; color: inherit;">Mengelola Lencana</a>
+                        <a href="/kelola-lencana" style="text-decoration: none; color: inherit;">Mengelola Lencana</a>
                     </div>
                 </div>
 
@@ -26,6 +26,7 @@
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         Tambah Data </button> <br></br>
 
+                        @foreach($materis as $index => $materi)
                         <div style="display: flex; justify-content: space-around;">
                 <div class="card" style="width: 18rem;">
                     <img class="card-img-top" src="https://via.placeholder.com/150" alt="Card image cap">
@@ -59,7 +60,7 @@
                             <a data-id="#" class="btn btn-danger delete" data-kode="#" href="#">Hapus</a> &nbsp;&nbsp;
                     </div><br>
             </div>
-</div>
+                        </div>
 
                         
             </div>

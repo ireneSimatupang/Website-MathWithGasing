@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\MateriController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,6 +48,10 @@ Route::get('/lencana-siswa', function () {
     return view('lencana-siswa.lencana-siswa');
 });
 
+Route::get('/kelola-lencana', function () {
+    return view('lencana-siswa.kelola-lencana');
+});
+
 
 
 Route::get('/Tambahdata-materi', function () {
@@ -56,10 +61,10 @@ Route::get('/Tambahdata-materi', function () {
 // routes/web.php
 
 Route::get('/akun-siswa', [UserController::class, 'manageStudents']);
-//Route::get('/akun-siswa', [UserController::class, 'pretest']);
+Route::post('/akun-siswa/exportPDF/{id}', [UserController::class, 'exportLaporan']);
 
 Route::get('/akun-admin', [AdminController::class, 'manageAdmin']);
-Route::get('/lencana-siswa', [AdminController::class, 'manageMateri']);
+Route::get('/lencana-siswa', [MateriController::class, 'manageMateri']);
 
 Route::post('/approvedAdmin/{id}', [AdminController::class, 'approvedAdmin']);
 

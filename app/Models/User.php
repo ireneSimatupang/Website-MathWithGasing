@@ -27,4 +27,9 @@ class User extends Model
     {
         return $this->hasMany(ScorePreTest::class, 'id_user', 'id_user');
     }
+
+    public function lencana()
+    {
+        return $this->hasMany(Lencana::class, 'id_user', 'id_LencanaPengguna');
+    }
 }

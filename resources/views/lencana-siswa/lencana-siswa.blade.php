@@ -42,21 +42,20 @@
                                 </tr>
                             </tfoot>
                             <tbody>
-                            @if(isset($materis) && $materis->count() > 0)
-                                @foreach($materis as $index => $materi)
+                            @foreach($materis as $index => $materi)
                                 <tr>
                                     <td>{{ $index + 1 }}</td>
-                                    <td>{{$user->title}}</td>
+                                    <td>{{$materi->title}}</td>
                                     <td class="text-center">
                                         <div class="d-flex justify-content-center">
-                                            <a href="/kelola-materi-bagian" class="btn btn-success">Buka</a> &nbsp;&nbsp;
+                                            <a href="/kelola-lencana" class="btn btn-success">Buka</a> &nbsp;&nbsp;
                                             
                                         </div>
                                     </td>
 
                                 </tr>
 
-
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
