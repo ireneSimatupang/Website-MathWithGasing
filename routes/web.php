@@ -4,6 +4,7 @@ use App\Http\Controllers\ScorePostTestController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\BadgeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MateriController;
 
@@ -65,6 +66,16 @@ Route::post('/akun-siswa/exportPDF/{id}', [UserController::class, 'exportLaporan
 
 Route::get('/akun-admin', [AdminController::class, 'manageAdmin']);
 Route::get('/lencana-siswa', [MateriController::class, 'manageMateri']);
+
+// Route::get('/kelola-lencana', [MateriController::class, 'manageMateriLencana']);
+
+Route::get('/kelola-lencana/{id_materi}', [BadgeController::class, 'manageBadge']);
+
+
+Route::post('/kelola-lencana', [BadgeController::class, 'store'])->name('store_badge');
+// Route::post('/kelola-lencana', 'BadgeController@store')->name('store_badge');
+// Route::get('/kelola-lencana', 'BadgeController@kelola')->name('kelola-lencana');
+
 
 Route::post('/approvedAdmin/{id}', [AdminController::class, 'approvedAdmin']);
 

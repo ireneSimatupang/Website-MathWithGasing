@@ -21,7 +21,7 @@
 
                 <h2 class="pb-3">Kelola Lencana</h2>
 
-            
+
 
                 <div class="card mb-4">
 
@@ -42,14 +42,14 @@
                                 </tr>
                             </tfoot>
                             <tbody>
-                            @foreach($materis as $index => $materi)
+                                @foreach($materis as $index => $materi)
                                 <tr>
                                     <td>{{ $index + 1 }}</td>
                                     <td>{{$materi->title}}</td>
                                     <td class="text-center">
                                         <div class="d-flex justify-content-center">
-                                            <a href="/kelola-lencana" class="btn btn-success">Buka</a> &nbsp;&nbsp;
-                                            
+                                            <a href="/kelola-lencana/{{$materi->id_materi}}" class="btn btn-success">Buka</a> &nbsp;&nbsp;
+
                                         </div>
                                     </td>
 
@@ -73,90 +73,90 @@
 <!-- // Modal Tambah Materi -->
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3 class="modal-title" id="exampleModalLabel">Tambah Topik Materi</h3>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-      <form action="" method="POST">
-            <div class="row">
-                <div class="col-md-4">
-                    <label for="judul">Judul</label>
-                </div>
-                <div class="col-md-8">
-                    <input type="text" class="form-control" name="judul">
-                </div>
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLabel">Tambah Topik Materi</h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="row py-1">
-                <div class="col-md-4">
-                    <label for="deskripsi">Deskripsi</label>
-                </div>
-                <div class="col-md-8">
-                    <input type="text" class="form-control" name="deskripsi">
-                </div>
+            <div class="modal-body">
+                <form action="" method="POST">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="judul">Judul</label>
+                        </div>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" name="judul">
+                        </div>
+                    </div>
+                    <div class="row py-1">
+                        <div class="col-md-4">
+                            <label for="deskripsi">Deskripsi</label>
+                        </div>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" name="deskripsi">
+                        </div>
+                    </div>
+                    <div class="row py-1">
+                        <div class="col-md-4">
+                            <label for="dibuat">Dibuat oleh</label>
+                        </div>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" name="dibuat">
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-end py-3">
+                        <button class="btn btn-success mx-3" type="submit">Simpan</button>
+                        <button class="btn btn-danger" type="submit">Batal</button>
+                    </div>
+                </form>
             </div>
-            <div class="row py-1">
-                <div class="col-md-4">
-                    <label for="dibuat">Dibuat oleh</label>
-                </div>
-                <div class="col-md-8">
-                    <input type="text" class="form-control" name="dibuat">
-                </div>
-            </div>
-            <div class="d-flex justify-content-end py-3">
-                <button class="btn btn-success mx-3" type="submit">Simpan</button>
-                <button class="btn btn-danger" type="submit">Batal</button>
-            </div>
-        </form>
-      </div>
+        </div>
     </div>
-  </div>
 </div>
 
 
 <!-- // Modal Ubah Materi -->
 
 <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3 class="modal-title" id="exampleModalLabel">Ubah Topik Materi</h3>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-      <form action="" method="POST">
-            <div class="row">
-                <div class="col-md-4">
-                    <label for="judul">Judul</label>
-                </div>
-                <div class="col-md-8">
-                    <input type="text" class="form-control" name="judul" value="Penjumlahan">
-                </div>
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLabel">Ubah Topik Materi</h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="row py-1">
-                <div class="col-md-4">
-                    <label for="deskripsi">Deskripsi</label>
-                </div>
-                <div class="col-md-8">
-                    <input type="text" class="form-control" name="deskripsi" value="Penjumlahan">
-                </div>
+            <div class="modal-body">
+                <form action="" method="POST">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="judul">Judul</label>
+                        </div>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" name="judul" value="Penjumlahan">
+                        </div>
+                    </div>
+                    <div class="row py-1">
+                        <div class="col-md-4">
+                            <label for="deskripsi">Deskripsi</label>
+                        </div>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" name="deskripsi" value="Penjumlahan">
+                        </div>
+                    </div>
+                    <div class="row py-1">
+                        <div class="col-md-4">
+                            <label for="dibuat">Dibuat oleh</label>
+                        </div>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" name="dibuat" value="Bronco">
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-end py-3">
+                        <button class="btn btn-success mx-3" type="submit">Simpan</button>
+                        <button class="btn btn-danger" type="submit">Batal</button>
+                    </div>
+                </form>
             </div>
-            <div class="row py-1">
-                <div class="col-md-4">
-                    <label for="dibuat">Dibuat oleh</label>
-                </div>
-                <div class="col-md-8">
-                    <input type="text" class="form-control" name="dibuat" value="Bronco">
-                </div>
-            </div>
-            <div class="d-flex justify-content-end py-3">
-                <button class="btn btn-success mx-3" type="submit">Simpan</button>
-                <button class="btn btn-danger" type="submit">Batal</button>
-            </div>
-        </form>
-      </div>
+        </div>
     </div>
-  </div>
 </div>

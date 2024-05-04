@@ -12,5 +12,11 @@ class MateriController extends Controller
 
         return view('lencana-siswa.lencana-siswa', compact('materis'));
     }
+    public function manageMateriLencana()
+    {
+        $materis = Materi::all();
+
+        return view('lencana-siswa.kelola-lencana', compact('materis'));
+    }
     
 }

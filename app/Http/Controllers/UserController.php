@@ -91,5 +91,13 @@ class UserController extends Controller
         return $pdf->stream('laporan-nilai-'.$user->name.'.pdf');
     }
 
+    public function countUsers()
+    {
+
+        $totalUsers = User::count();
+
+        return $totalUsers;
+    }
+
 
 }
