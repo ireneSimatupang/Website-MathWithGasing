@@ -49,7 +49,6 @@
                                     <td class="text-center">
                                         <div class="d-flex justify-content-center">
                                             <a href="/kelola-lencana/{{$materi->id_materi}}" class="btn btn-success">Buka</a> &nbsp;&nbsp;
-
                                         </div>
                                     </td>
 

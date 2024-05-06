@@ -11,7 +11,9 @@ class Badge extends Model
     use HasFactory;
     protected $table = 'badge';
     protected $primaryKey = 'id_badge';
-    protected $fillable = ['image','explanation','id_penggunaWeb','id_materi','id_posttest'];
+    protected $guarded = ['id_badge'];
+
+    public $timestamps = false;
 
     public function lencana() {
         return $this->belongsTo(Lencana::class, 'id_LencanaPengguna');
