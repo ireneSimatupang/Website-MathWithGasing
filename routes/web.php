@@ -7,6 +7,8 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BadgeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MateriController;
+use App\Mail\GasingEmail;
+use Illuminate\Support\Facades\Mail;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,9 +22,7 @@ use App\Http\Controllers\MateriController;
 */
 
 // BERANDA
-Route::get('/', function () {
-    return view('beranda');
-});
+Route::get('/', [UserController::class, 'infoBeranda']);
 
 
 // MENGELOLA AKUN
@@ -42,10 +42,9 @@ Route::get('/akun-admin', [AdminController::class, 'manageAdmin']);
 // AKUN SISWA
 Route::get('/akun-siswa', [UserController::class, 'manageStudents']);
 
-Route::post('/akun-siswa/exportPDF/{id}', [UserController::class, 'exportLaporan']);
+Route::post('/akun-siswa/sendEmail/{id}', [UserController::class, 'sendEmail']);
 
-
-
+Route::post('/update-status/{id}', [UserController::class, 'updateStatus']);
 
 // MENGELOLA MATERI
 Route::get('/kelola-materi', function () {
@@ -101,6 +100,3 @@ Route::delete('/hapus-lencana/{id}', [BadgeController::class, 'destroy']);
 // Route::get('/kelola-lencana', [MateriController::class, 'manageMateriLencana']);
 // Route::post('/kelola-lencana', 'BadgeController@store')->name('store_badge');
 // Route::get('/kelola-lencana', 'BadgeController@kelola')->name('kelola-lencana');
-
-
-

@@ -11,7 +11,7 @@ class User extends Model
 
     protected $table = 'user'; // Nama tabel
     protected $primaryKey = 'id_user'; // Kunci utama
-    protected $fillable = ['name', 'email', 'password', 'gender']; // Kolom yang bisa diisi
+    protected $fillable = ['name', 'email', 'password', 'gender', 'status']; // Kolom yang bisa diisi
 
     public $total_score;
     public $total_pretest;

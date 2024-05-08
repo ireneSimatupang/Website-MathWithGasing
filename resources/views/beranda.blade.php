@@ -35,7 +35,7 @@
                                         <i class="fa-solid fa-user fa-6x"></i>
                                     </div>
                                     <div class="col-md-6 pt-3">
-                                        <h3>30 Siswa Terdaftar</h3>
+                                        <h3>{{$siswa}} Siswa Terdaftar</h3>
                                     </div>
                                 </div>
                             </div>
@@ -49,7 +49,7 @@
                                         <i class="fa-solid fa-user-shield fa-6x"></i>
                                     </div>
                                     <div class="col-md-6 pt-3">
-                                        <h3>30 Admin Terdaftar</h3>
+                                        <h3>{{$admin}} Admin Terdaftar</h3>
                                     </div>
                                 </div>
                             </div>
@@ -63,7 +63,7 @@
                                         <i class="fa-solid fa-book-bookmark fa-6x"></i>
                                     </div>
                                     <div class="col-md-6 pt-3">
-                                        <h3>30 Topik Materi</h3>
+                                        <h3>{{$materi}} Topik Materi</h3>
                                     </div>
                                 </div>
                             </div>

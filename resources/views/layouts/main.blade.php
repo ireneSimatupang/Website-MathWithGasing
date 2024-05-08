@@ -21,6 +21,7 @@
 
   <title>Math With Gasing</title>
   <link href="{{asset('css/styles.css')}}" rel="stylesheet" />
+  <link rel="icon" href="{{asset('images/logo.png')}}" type="image/icon type">
 </head>
 
 <body class="sb-nav-fixed">

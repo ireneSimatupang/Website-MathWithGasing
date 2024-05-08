@@ -7,38 +7,31 @@
 
 @section('scripts')
 <script>
-    function generatePDF(user_id) {
-        console.log("User ID : " + user_id);
+    document.getElementById('sendEmailForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent default form submission
 
-        $.ajax({
-            type: 'GET',
-            url: '/generate-pdf/' + user_id,
-            success: function(response) {
-                alert('PDF berhasil dibuat.');
-            },
-            error: function(xhr, status, error) {
-                console.error(xhr.responseText);
-            }
-        });
-    }
-
-    function sendEmail(email) {
-        $.ajax({
-            type: 'POST',
-            url: '/send-email',
-            data: {
-                email: email
-            },
-            success: function(response) {
-                alert('Email berhasil dikirim.');
-            },
-            error: function(xhr, status, error) {
-                console.error(xhr.responseText);
-            }
-        });
-    }
+        // Submit form via AJAX
+        fetch(this.action, {
+                method: this.method,
+                body: new FormData(this)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert(data.message); // Show success message from response
+                } else {
+                    alert(data.message); // Show error message from response (if any)
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Terjadi kesalahan saat mengirim email.');
+            });
+    });
 </script>
 @endsection
+
+
 
 <div id="layoutSidenav">
 
@@ -55,6 +48,13 @@
                         <a href="/akun-siswa" style="text-decoration: none; color: inherit;">Kelola Akun Siswa</a>
                     </div>
                 </div>
+
+                @if (session('success'))
+                <div class="alert alert-success alert-dismissible fade show pt-4" role="alert">
+                    {{ session('success') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                @endif
 
                 <h2 class="pb-3">Kelola Akun Siswa</h2>
 
@@ -91,25 +91,24 @@
                                     <td> <!-- Kolom untuk toggle button -->
                                         <!-- Toggle button -->
                                         <div class="d-flex justify-content-center   ">
-                                            <div class="custom-control custom-switch text-center pt-2">
-                                                <input type="checkbox" class="custom-control-input toggle-switch" id="toggle-switch1">
-                                                <label class="custom-control-label" for="toggle-switch1">On/Off</label>
-                                            </div>
+                                            <form method="POST" action="/update-status/{{$user->id_user}}" id="user-status-form-{{$user->id_user}}">
+                                                @csrf
+                                                <div class="custom-control custom-switch text-center pt-2">
+                                                    <input type="checkbox" class="custom-control-input" name="status" id="toggle-switch{{$user->id_user}}" @if($user->status == 1) checked @endif
+                                                    onchange="document.getElementById('user-status-form-{{$user->id_user}}').submit()"> <label class="custom-control-label" for="toggle-switch{{$user->id_user}}">Off/On</label>
+                                                </div>
+                                            </form>
+
                                             <div class="d-flex justify-content-center tambah-data pl-3">
                                                 <div class="button-1">
                                                     <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                                         Detail </button> &nbsp;&nbsp;&nbsp;
                                                 </div>
-
                                                 <div class="button-2">
-                                                    <form enctype="multipart/form-data" action="/akun-siswa/exportPDF/{{ $user->id_user }}" method="post">
+                                                    <form id="sendEmailForm" enctype="multipart/form-data" action="/akun-siswa/sendEmail/{{$user->id_user}}" method="post">
                                                         {{ csrf_field() }}
-                                                        <button type="submit" class="btn btn-primary" onclick="this.form.target='_blank';return true;">Generate PDF</button>
+                                                        <button type="submit" class="btn btn-primary">Kirim Nilai</button>
                                                     </form>
-                                                </div>
-                                                &nbsp;&nbsp;&nbsp;
-                                                <div class="button-3">
-                                                    <button type="button" class="btn btn-success" onclick="sendEmail('{{ $user->email }}')">Kirim Nilai</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -152,49 +151,47 @@
             </div>
 
             <div class="modal-body">
-                <form action="" method="POST">
-                    <div class="row py-1">
-                        <div class="col-md-4">
-                            <label for="nama">Nama</label>
-                        </div>
-                        <div class="col-md-8">
-                            <p>{{ $user->name }}</p>
-                        </div>
+                <div class="row py-1">
+                    <div class="col-md-4">
+                        <label for="nama">Nama</label>
                     </div>
-                    <div class="row py-1">
-                        <div class="col-md-4">
-                            <label for="email">Email Orangtua</label>
-                        </div>
-                        <div class="col-md-8">
-                            <p>{{ $user->email }}</p>
-                        </div>
+                    <div class="col-md-8">
+                        <p>: {{ $user->name }}</p>
                     </div>
-                    <div class="row py-1">
-                        <div class="col-md-4 ">
-                            <label for="gender">Jenis Kelamin</label>
-                        </div>
-                        <div class="col-md-8">
-                            <p>{{ $user->gender }}</p>
-                        </div>
+                </div>
+                <div class="row py-1">
+                    <div class="col-md-4">
+                        <label for="email">Email Orangtua</label>
                     </div>
-                    <div class="row py-1">
-                        <div class="col-md-4 ">
-                            <label for="pretest">Total Pre-Test</label>
-                        </div>
-                        <div class="col-md-8">
-                            <p>{{$user->total_pretest ?? '-' }}</p>
-                        </div>
+                    <div class="col-md-8">
+                        <p>: {{ $user->email }}</p>
                     </div>
-                    <div class="row py-1">
-                        <div class="col-md-4 ">
-                            <label for="posttest">Total Post-Test</label>
-                        </div>
-                        <div class="col-md-8">
-                            <p>{{ $user->total_score ?? '-' }}</p>
-                        </div>
+                </div>
+                <div class="row py-1">
+                    <div class="col-md-4 ">
+                        <label for="gender">Jenis Kelamin</label>
                     </div>
+                    <div class="col-md-8">
+                        <p>: {{ $user->gender }}</p>
+                    </div>
+                </div>
+                <div class="row py-1">
+                    <div class="col-md-4 ">
+                        <label for="pretest">Total Pre-Test</label>
+                    </div>
+                    <div class="col-md-8">
+                        <p>: {{$user->total_pretest ?? '-' }}</p>
+                    </div>
+                </div>
+                <div class="row py-1">
+                    <div class="col-md-4 ">
+                        <label for="posttest">Total Post-Test</label>
+                    </div>
+                    <div class="col-md-8">
+                        <p>: {{ $user->total_score ?? '-' }}</p>
+                    </div>
+                </div>
             </div>
-            </form>
         </div>
     </div>
 </div>
