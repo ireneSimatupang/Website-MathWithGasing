@@ -12,6 +12,8 @@ class unit extends Model
     protected $table = 'unit';
     protected $primaryKey = 'id_unit';
     protected $fillable = ['explanation','id_materi','title'];
+
+    public $timestamps = false;
     
     public function materi() {
         return $this->belongsTo(Materi::class, 'id_materi');

@@ -20,11 +20,18 @@
                     </div>
                 </div>
 
-                <h2 class="pb-3">Kelola Materi</h2>
+                <h2 class="pb-3">Kelola Sub Materi</h2>
+
+                @if (session('success'))
+                <div class="alert alert-success alert-dismissible fade show pt-4" role="alert">
+                    {{ session('success') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                @endif
 
                 <div class="tambah-data pb-3 mt-2 fw-bold mx-1 mb-3 mt-1 justify-content-start">
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Tambah Data </button>
+                        Tambah Data </button>
                     <a href="/KelolaPengguna/KelolaUnit" class="btn btn-secondary mx-4">Kelola Level Bonus</a>
 
                 </div>
@@ -48,18 +55,38 @@
                                 </tr>
                             </tfoot>
                             <tbody>
+                                @php
+                                $i=1;
+                                @endphp
+                                @foreach ($unit as $u)
+
+
                                 <tr>
-                                    <td>1</td>
-                                    <td>Penjumlahan Bagian 1</td>
+                                    <td>{{$i}}</td>
+                                    <td>{{$u->explanation}}</td>
                                     <td class="text-center">
                                         <div class="d-flex justify-content-center">
-                                            <a href="/kelola-materi-level" class="btn btn-success">Buka</a> &nbsp;&nbsp;
-                                            <a href="#" class="btn btn-warning text-light"  data-bs-toggle="modal" data-bs-target="#exampleModal2">Ubah</a> &nbsp;&nbsp;
-                                            <a data-id="#" class="btn btn-danger delete" data-kode="#" href="#">Hapus</a> &nbsp;&nbsp;
+                                            <div class="button2">
+                                                <a href="/kelola-materi-level/{{$u->id_unit}}" class="btn btn-success">Buka</a> &nbsp;&nbsp;
+
+                                            </div>
+                                            <div class="button3">
+                                                <a href="#" class="btn btn-warning text-light" data-bs-toggle="modal" data-bs-target="#exampleModal{{$u->id_unit}}">Ubah</a> &nbsp;&nbsp;
+
+                                            </div>
+                                            <form action="/kelola-materi-bagian/hapus/{{$u->id_unit}}" method="POST" class="d-inline-block">
+                                                @csrf
+                                                <button type="submit" class="btn btn-danger delete" data-materi-id="{{ $u->id_unit }}" onclick="return confirm('Apakah anda yakin ingin menghapus sub materi ini? \n(Hal ini juga akan menghapus bagian dari sub materi tersebut)')">Hapus</button>
+                                            </form>
                                         </div>
                                     </td>
 
                                 </tr>
+                                @php
+                                $i++;
+                                @endphp
+
+                                @endforeach
 
 
                             </tbody>
@@ -75,91 +102,77 @@
 @endsection
 
 <!-- // Modal Tambah Bagian Materi -->
-
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3 class="modal-title" id="exampleModalLabel">Tambah Topik Bagian Materi</h3>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-      <form action="" method="POST">
-            <div class="row">
-                <div class="col-md-4">
-                    <label for="judul">Judul</label>
-                </div>
-                <div class="col-md-8">
-                    <input type="text" class="form-control" name="judul">
-                </div>
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLabel">Tambah Topik Bagian Materi</h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="row py-1">
-                <div class="col-md-4">
-                    <label for="deskripsi">Deskripsi</label>
-                </div>
-                <div class="col-md-8">
-                    <input type="text" class="form-control" name="deskripsi">
-                </div>
+            <div class="modal-body">
+                <form action="/kelola-materi-bagian/tambah/{{$id_materi}}" method="POST">
+                    @csrf
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="judul">Judul</label>
+                        </div>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" name="judul">
+                        </div>
+                    </div>
+                    <div class="row py-1">
+                        <div class="col-md-4">
+                            <label for="deskripsi">Deskripsi</label>
+                        </div>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" name="deskripsi">
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-end py-3">
+                        <button class="btn btn-success mx-3" type="submit">Simpan</button>
+                        <button class="btn btn-danger" type="submit">Batal</button>
+                    </div>
+                </form>
             </div>
-            <div class="row py-1">
-                <div class="col-md-4">
-                    <label for="dibuat">Dibuat oleh</label>
-                </div>
-                <div class="col-md-8">
-                    <input type="text" class="form-control" name="dibuat">
-                </div>
-            </div>
-            <div class="d-flex justify-content-end py-3">
-                <button class="btn btn-success mx-3" type="submit">Simpan</button>
-                <button class="btn btn-danger" type="submit">Batal</button>
-            </div>
-        </form>
-      </div>
+        </div>
     </div>
-  </div>
 </div>
 
 <!-- // Modal Ubah Materi -->
-
-<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3 class="modal-title" id="exampleModalLabel">Ubah Topik Bagian Materi</h3>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-      <form action="" method="POST">
-            <div class="row">
-                <div class="col-md-4">
-                    <label for="judul">Judul</label>
-                </div>
-                <div class="col-md-8">
-                    <input type="text" class="form-control" name="judul" value="Penjumlahan">
-                </div>
+@foreach ($unit as $u)
+<div class="modal fade" id="exampleModal{{$u->id_unit}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLabel">Ubah Topik Bagian Materi</h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="row py-1">
-                <div class="col-md-4">
-                    <label for="deskripsi">Deskripsi</label>
-                </div>
-                <div class="col-md-8">
-                    <input type="text" class="form-control" name="deskripsi" value="Penjumlahan">
-                </div>
+            <div class="modal-body">
+                <form action="/kelola-materi-bagian/ubah/{{$u->id_unit}}" method="POST">
+                    @csrf
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="judul">Judul</label>
+                        </div>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" name="judul" value="{{$u->title}}">
+                        </div>
+                    </div>
+                    <div class="row py-1">
+                        <div class="col-md-4">
+                            <label for="deskripsi">Deskripsi</label>
+                        </div>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" name="deskripsi" value="{{$u->explanation}}">
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-end py-3">
+                        <button class="btn btn-success mx-3" type="submit">Simpan</button>
+                        <button class="btn btn-danger" type="submit">Batal</button>
+                    </div>
+                </form>
             </div>
-            <div class="row py-1">
-                <div class="col-md-4">
-                    <label for="dibuat">Dibuat oleh</label>
-                </div>
-                <div class="col-md-8">
-                    <input type="text" class="form-control" name="dibuat" value="Bronco">
-                </div>
-            </div>
-            <div class="d-flex justify-content-end py-3">
-                <button class="btn btn-success mx-3" type="submit">Simpan</button>
-                <button class="btn btn-danger" type="submit">Batal</button>
-            </div>
-        </form>
-      </div>
+        </div>
     </div>
-  </div>
 </div>
+@endforeach

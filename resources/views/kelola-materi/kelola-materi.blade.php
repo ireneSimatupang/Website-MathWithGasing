@@ -64,7 +64,7 @@
                                     <td>{{$m->deskripsi}}</td>
                                     <td class="text-center">
                                         <div class="d-flex justify-content-center">
-                                            <div class="button1"><a href="/kelola-materi-bagian" class="btn btn-success">Buka</a> &nbsp;&nbsp;
+                                            <div class="button1"><a href="/kelola-materi-bagian/{{$m->id_materi}}" class="btn btn-success">Buka</a> &nbsp;&nbsp;
 
 
                                             </div>
@@ -74,7 +74,7 @@
                                             </div>
                                             <form action="/kelola-materi/hapus/{{$m->id_materi}}" method="POST" class="d-inline-block">
                                                 @csrf
-                                                <button type="submit" class="btn btn-danger delete" data-materi-id="{{ $m->id_materi }}" onclick="return confirm('Apakah anda yakin ingin menghapus materi ini? \n(Hal ini juga akan menghapus bagian dari materi tersebut.)')">Hapus</button>
+                                                <button type="submit" class="btn btn-danger delete" data-materi-id="{{ $m->id_materi }}" onclick="return confirm('Apakah anda yakin ingin menghapus materi ini? \n(Hal ini juga akan menghapus bagian dari materi tersebut)')">Hapus</button>
                                             </form>
                                         </div>
                                     </td>

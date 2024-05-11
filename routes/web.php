@@ -7,6 +7,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BadgeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MateriController;
+use App\Http\Controllers\UnitController;
 use App\Mail\GasingEmail;
 use Illuminate\Support\Facades\Mail;
 
@@ -53,13 +54,21 @@ Route::post('/update-status/{id}', [UserController::class, 'updateStatus']);
 // MENGELOLA MATERI
 Route::get('/kelola-materi', [MateriController::class,'getMateri']);
 
-Route::get('/kelola-materi/tambah', function () {
-    return view('kelola-materi.tambah-materi');
-});
+Route::post('/kelola-materi/tambah', [MateriController::class, 'tambahMateri']);
 
-Route::get('/kelola-materi-bagian', function () {
-    return view('kelola-materi.kelola-materi-bagian');
-});
+Route::post('/kelola-materi/ubah/{id}', [MateriController::class, 'ubahMateri']);
+
+Route::post('/kelola-materi/hapus/{id}', [MateriController::class, 'hapusMateri']);
+
+
+// MENGELOLA SUB-MATERI / UNIT
+Route::get('/kelola-materi-bagian/{id}',[UnitController::class, 'getUnit']);
+
+Route::post('/kelola-materi-bagian/tambah/{id}',[UnitController::class, 'tambahUnit']);
+
+Route::post('/kelola-materi-bagian/ubah/{id}',[UnitController::class, 'ubahUnit']);
+
+Route::post('/kelola-materi-bagian/hapus/{id}',[UnitController::class, 'hapusUnit']);
 
 Route::get('/kelola-materi-level', function () {
     return view('kelola-materi.kelola-materi-level');
@@ -69,11 +78,6 @@ Route::get('/Tambahdata-materi', function () {
     return view('Tambahdata-materi');
 });
 
-Route::post('/kelola-materi/tambah', [MateriController::class, 'tambahMateri']);
-
-Route::post('/kelola-materi/ubah/{id}', [MateriController::class, 'ubahMateri']);
-
-Route::post('/kelola-materi/hapus/{id}', [MateriController::class, 'hapusMateri']);
 
 
 // PENCAPAIAN SISWA

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Mail\GasingEmail;
 use App\Models\Admin;
 use App\Models\Materi;
-use Illuminate\Http\Request; // Import kelas Request
+use Illuminate\Http\Request; 
 use Illuminate\Support\Facades\Mail; // Import kelas Mail
 use App\Models\ScorePostTest;
 use App\Models\ScorePreTest;
