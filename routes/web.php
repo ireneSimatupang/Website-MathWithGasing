@@ -21,8 +21,12 @@ use Illuminate\Support\Facades\Mail;
 |
 */
 
+Route::get('/', function() {
+    return view('Auth.login');
+});
+
 // BERANDA
-Route::get('/', [UserController::class, 'infoBeranda']);
+Route::get('/beranda', [UserController::class, 'infoBeranda']);
 
 
 // MENGELOLA AKUN
@@ -47,9 +51,7 @@ Route::post('/akun-siswa/sendEmail/{id}', [UserController::class, 'sendEmail']);
 Route::post('/update-status/{id}', [UserController::class, 'updateStatus']);
 
 // MENGELOLA MATERI
-Route::get('/kelola-materi', function () {
-    return view('kelola-materi.kelola-materi');
-});
+Route::get('/kelola-materi', [MateriController::class,'getMateri']);
 
 Route::get('/kelola-materi/tambah', function () {
     return view('kelola-materi.tambah-materi');
@@ -67,6 +69,11 @@ Route::get('/Tambahdata-materi', function () {
     return view('Tambahdata-materi');
 });
 
+Route::post('/kelola-materi/tambah', [MateriController::class, 'tambahMateri']);
+
+Route::post('/kelola-materi/ubah/{id}', [MateriController::class, 'ubahMateri']);
+
+Route::post('/kelola-materi/hapus/{id}', [MateriController::class, 'hapusMateri']);
 
 
 // PENCAPAIAN SISWA
@@ -100,3 +107,19 @@ Route::delete('/hapus-lencana/{id}', [BadgeController::class, 'destroy']);
 // Route::get('/kelola-lencana', [MateriController::class, 'manageMateriLencana']);
 // Route::post('/kelola-lencana', 'BadgeController@store')->name('store_badge');
 // Route::get('/kelola-lencana', 'BadgeController@kelola')->name('kelola-lencana');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

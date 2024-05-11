@@ -4,7 +4,7 @@
             <div class="nav ">
                 <a class="px-4 " href="/"><img src="{{asset('images/logo.png')}}" width="120" alt=""></a>
 
-                <a class="nav-link pt-5" href="/">
+                <a class="nav-link pt-5" href="/beranda">
                     <div class="sb-nav-link-icon"><i class="fas fa-home"></i></div>
                     BERANDA
                 </a>

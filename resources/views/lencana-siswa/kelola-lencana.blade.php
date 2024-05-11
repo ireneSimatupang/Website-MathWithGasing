@@ -15,7 +15,7 @@
         <div class="breadcrumb rounded-pill mb-4 bg-light" style="color: RGBA(107,107,107,0.75); background-color: rgbA">
           <div class="item px-3">
             <i class="fas fa-home pt-1"></i>&nbsp;
-            <a href="/" style="text-decoration: none; color: inherit;">Beranda /</a>
+            <a href="/beranda" style="text-decoration: none; color: inherit;">Beranda /</a>
             <a href="/kelola-lencana" style="text-decoration: none; color: inherit;">Mengelola Lencana</a>
           </div>
         </div>

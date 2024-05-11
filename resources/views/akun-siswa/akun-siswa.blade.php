@@ -44,7 +44,7 @@
                 <div class="breadcrumb rounded-pill mb-4 bg-light" style="color: RGBA(107,107,107,0.75); background-color: rgbA">
                     <div class="item px-3">
                         <i class="fas fa-home pt-1"></i>&nbsp;
-                        <a href="/" style="text-decoration: none; color: inherit;">Beranda /</a>
+                        <a href="/beranda" style="text-decoration: none; color: inherit;">Beranda /</a>
                         <a href="/akun-siswa" style="text-decoration: none; color: inherit;">Kelola Akun Siswa</a>
                     </div>
                 </div>
@@ -82,9 +82,12 @@
                             </tfoot>
                             <tbody>
                                 @if(isset($users) && $users->count() > 0)
+                                @php 
+                                $i=1;
+                                @endphp
                                 @foreach($users as $index => $user)
                                 <tr>
-                                    <td>{{ $user->id_user }}</td>
+                                    <td>{{ $i }}</td>
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->gender }}</td>
@@ -115,6 +118,9 @@
                                     </td>
 
                                 </tr>
+                                @php 
+                                $i++;
+                                @endphp
                                 @endforeach
                                 @else
                                 <tr>

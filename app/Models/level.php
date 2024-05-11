@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Models\Models\Materi;
+use App\Models\Materi;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
