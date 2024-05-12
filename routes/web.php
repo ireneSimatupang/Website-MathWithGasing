@@ -73,7 +73,11 @@ Route::post('/kelola-materi-bagian/hapus/{id}',[UnitController::class, 'hapusUni
 
 
 // MENGELOLA LEVEL
+
 Route::get('/kelola-materi-level/{id}', [LevelController::class,'getLevel']);
+
+
+// MENGELOLA PRE TEST
 
 Route::post('/kelola-materi-level/tambah-pretest/{id}', [LevelController::class,'tambahPretest']);
 
@@ -81,11 +85,21 @@ Route::post('/kelola-materi-level/ubah-pretest/{id}', [LevelController::class,'u
 
 Route::post('/kelola-materi-level/hapus-pretest/{id}', [LevelController::class,'hapusPretest']);
 
-Route::get('/Tambahdata-materi', function () {
-    return view('Tambahdata-materi');
-});
 
+// MENGELOLA POST TEST
 
+Route::post('/kelola-materi-level/tambah-posttest/{id}', [LevelController::class,'tambahPosttest']);
+
+Route::post('/kelola-materi-level/ubah-posttest/{id}', [LevelController::class,'ubahPosttest']);
+
+Route::post('/kelola-materi-level/hapus-posttest/{id}', [LevelController::class,'hapusPosttest']);
+
+// MENGELOLA VIDEO
+Route::post('/kelola-materi-level/tambah-video/{id}', [LevelController::class,'tambahVideo']);
+
+Route::post('/kelola-materi-level/ubah-video/{id}', [LevelController::class,'ubahVideo']);
+
+Route::post('/kelola-materi-level/hapus-video/{id}', [LevelController::class,'hapusVideo']);
 
 // PENCAPAIAN SISWA
 

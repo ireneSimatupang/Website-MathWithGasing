@@ -12,6 +12,13 @@ class Posttest extends Model
     protected $primaryKey = 'id_posttest';
     protected $fillable = ['id_level'];
 
+    public $timestamps = false;
+
+    public function qPosttest()
+    {
+        return $this->hasMany(SoalPosttest::class, 'id_posttest', 'id_question_posttest');
+    }
+
     public function level() {
         return $this->belongsTo(level::class, 'id_level');
     }
