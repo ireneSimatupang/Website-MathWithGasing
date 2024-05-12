@@ -125,7 +125,7 @@
                 @php
                 $i=1;
                 @endphp
-                @foreach ($qPosttest as $q)
+                @foreach ($video as $q)
                 <tr>
                   <td>{{$i}}</td>
                   <td>{{$q->title}}</td>
@@ -643,7 +643,7 @@
 </div>
 
 <!-- // Modal Detail Materi video -->
-@foreach ($qPosttest as $q)
+@foreach ($video as $q)
 <div class="modal fade" id="vExampleModal{{$q->id_material_video}}" tabindex="-1" aria-labelledby="exampleModal9Label" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
@@ -657,6 +657,7 @@
 
       <div class="modal-body">
         <form action="" method="POST">
+          @csrf
           <div class="col">
             <label for="judul">Judul Video</label>
             <input type="text" class="form-control" name="judul" value="{{$q->title}}" disabled>
@@ -667,7 +668,7 @@
           </div>
           <div class="col">
             <label for="video">Unggah Video Pembelajaran</label>
-            <input type="file" class="form-control" id="video" name="video" value="{{$q->video_Url}}" disabled>
+            <input type="text" class="form-control" id="video" name="video" value="{{$q->video_Url}}" disabled>
           </div>
         </form>
       </div>
@@ -678,7 +679,7 @@
 
 <!-- // Modal Ubah Materi video -->
 
-@foreach ($qPosttest as $q)
+@foreach ($video as $q)
 <div class="modal fade" id="vUbahExampleModal{{$q->id_material_video}}" tabindex="-1" aria-labelledby="exampleModal9Label" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
@@ -692,6 +693,7 @@
 
       <div class="modal-body">
         <form action="/kelola-materi-level/ubah-video/{{$q->id_material_video}}" method="POST">
+        @csrf
           <div class="col">
             <label for="judul">Judul Video</label>
             <input type="text" class="form-control" name="judul" value="{{$q->title}}">
@@ -702,7 +704,7 @@
           </div>
           <div class="col">
             <label for="video">Unggah Video Pembelajaran</label>
-            <input type="file" class="form-control" id="video" name="video" value="{{$q->video_Url}}">
+            <input type="text" class="form-control" id="video" name="video" value="{{$q->video_Url}}">
           </div>
 
           <div class="d-flex justify-content-end py-3">
