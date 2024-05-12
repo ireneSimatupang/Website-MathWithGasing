@@ -13,6 +13,8 @@ class level extends Model
     protected $table = 'level';
     protected $primaryKey = 'id_level';
     protected $fillable = ['id_materi','level_number','id_unit'];
+
+    public $timestamps = false;
     
     public function materi() {
         return $this->belongsTo(Materi::class, 'id_materi');
@@ -25,5 +27,10 @@ class level extends Model
     public function posttest()
     {
         return $this->hasMany(Posttest::class, 'id_level', 'id_posttest');
+    }
+
+    public function pretest()
+    {
+        return $this->hasMany(Pretest::class, 'id_level', 'id_pretest');
     }
 }

@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BadgeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\LevelController;
 use App\Http\Controllers\MateriController;
 use App\Http\Controllers\UnitController;
 use App\Mail\GasingEmail;
@@ -70,9 +71,15 @@ Route::post('/kelola-materi-bagian/ubah/{id}',[UnitController::class, 'ubahUnit'
 
 Route::post('/kelola-materi-bagian/hapus/{id}',[UnitController::class, 'hapusUnit']);
 
-Route::get('/kelola-materi-level', function () {
-    return view('kelola-materi.kelola-materi-level');
-});
+
+// MENGELOLA LEVEL
+Route::get('/kelola-materi-level/{id}', [LevelController::class,'getLevel']);
+
+Route::post('/kelola-materi-level/tambah-pretest/{id}', [LevelController::class,'tambahPretest']);
+
+Route::post('/kelola-materi-level/ubah-pretest/{id}', [LevelController::class,'ubahPretest']);
+
+Route::post('/kelola-materi-level/hapus-pretest/{id}', [LevelController::class,'hapusPretest']);
 
 Route::get('/Tambahdata-materi', function () {
     return view('Tambahdata-materi');

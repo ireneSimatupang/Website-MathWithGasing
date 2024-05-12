@@ -34,7 +34,19 @@
             </div>
         </div>
         <div class="sb-sidenav-footer">
-            <i class="fas fa-sign-out"></i> &nbsp;LOG OUT
+            <div class="d-flex">
+
+
+                <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();"><i class="fas fa-sign-out"></i> &nbsp;&nbsp;
+                    {{ __('LOG OUT') }}
+                </a>
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
+
+            </div>
         </div>
     </nav>
 </div>
