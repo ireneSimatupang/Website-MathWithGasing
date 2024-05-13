@@ -44,13 +44,11 @@
                             <tbody>
 
                                 @foreach($users as $index => $user)
-
-
                                 <tr>
                                     <td>{{ $index + 1 }}</td>
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->total_score ?? '-' }}</td> <!-- Mengambil skor post-test dengan relasi -->
-                                    <td>{{ $user->jumlah_lencana }}</td>
+                                    <td>{{ $userLencana }}</td>
                                 </tr>
                                 @endforeach
                             </tbody>

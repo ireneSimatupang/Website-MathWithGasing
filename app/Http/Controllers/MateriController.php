@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Materi;
+use App\Models\UnitBonus;
 use Illuminate\Http\Request;
 
 class MateriController extends Controller
@@ -41,6 +42,10 @@ class MateriController extends Controller
         $materi->id_penggunaWeb = auth()->id();
 
         $materi->save();
+
+        $unitB = new UnitBonus();
+        $unitB->id_materi = $materi->id_materi;
+        $unitB->save();
 
         return redirect()->back()->with('success', 'Materi berhasil disimpan!');
     }

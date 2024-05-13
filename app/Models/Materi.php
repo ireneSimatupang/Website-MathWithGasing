@@ -41,4 +41,5 @@ class Materi extends Model
     {
         return $this->hasMany(level::class, 'id_materi', 'id_level');
     }
+
 }

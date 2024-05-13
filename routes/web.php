@@ -7,6 +7,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BadgeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LevelController;
+use App\Http\Controllers\LevelBonusController;
 use App\Http\Controllers\MateriController;
 use App\Http\Controllers\UnitController;
 use App\Mail\GasingEmail;
@@ -94,12 +95,26 @@ Route::post('/kelola-materi-level/ubah-posttest/{id}', [LevelController::class,'
 
 Route::post('/kelola-materi-level/hapus-posttest/{id}', [LevelController::class,'hapusPosttest']);
 
+
 // MENGELOLA VIDEO
 Route::post('/kelola-materi-level/tambah-video/{id}', [LevelController::class,'tambahVideo']);
 
 Route::post('/kelola-materi-level/ubah-video/{id}', [LevelController::class,'ubahVideo']);
 
 Route::post('/kelola-materi-level/hapus-video/{id}', [LevelController::class,'hapusVideo']);
+
+// MENGELOLA LEVEL BONUS
+
+Route::get('/kelola-level-bonus/{id}', [LevelBonusController::class,'getLevel']);
+
+Route::post('/kelola-level-bonus/tambah/{id}', [LevelBonusController::class,'tambahBonus']);
+
+Route::post('/kelola-level-bonus/ubah/{id}', [LevelBonusController::class,'ubahBonus']);
+
+Route::post('/kelola-level-bonus/hapus/{id}', [LevelBonusController::class,'hapusBonus']);
+
+
+
 
 // PENCAPAIAN SISWA
 
@@ -116,7 +131,7 @@ Route::post('/send-email', [UserController::class, 'sendEmail']);
 
 Route::get('/lencana-siswa', [MateriController::class, 'manageMateri']);
 
-Route::get('/kelola-lencana/{id_materi}', [BadgeController::class, 'manageBadge']);
+Route::get('/kelola-lencana/{id}', [BadgeController::class, 'manageBadge']);
 
 Route::post('/tambah-lencana', [BadgeController::class, 'store']);
 

@@ -11,14 +11,25 @@ use Illuminate\Support\Facades\Storage;
 
 class BadgeController extends Controller
 {
-    public function manageBadge($id_materi)
+    public function manageBadge(Request $request, $id)
     {
-        $badges = Badge::all();
-        $materi = Materi::findOrFail($id_materi);
-        $level = Level::where('id_materi', $id_materi)->first();
-        $posttest = Posttest::where('id_level', $level->id_level)->first();
 
-        return view('lencana-siswa.kelola-lencana', compact('badges', 'materi', 'posttest'));
+
+        $id_materi = $request->route('id');
+
+
+        $badges =  Materi::where('materi.id_materi', $id_materi)
+            ->join('badge', 'materi.id_materi', '=', 'badge.id_materi')
+            ->get('badge.*');
+
+
+        $materiPostTest = Materi::where('materi.id_materi', $id_materi)
+            ->join('level', 'materi.id_materi', '=', 'level.id_materi')
+            ->join('posttest', 'level.id_level', '=', 'posttest.id_level')
+            ->first('posttest.*');
+
+
+        return view('lencana-siswa.kelola-lencana', compact('badges', 'materiPostTest', 'id_materi'));
     }
 
     public function store(Request $request)
@@ -39,9 +50,9 @@ class BadgeController extends Controller
         $request->lencana->move(public_path('images'), $imageName);
         $badge->image = $imageName;
 
-        $badge->id_penggunaWeb = 1; // contoh penggunaan id_penggunaWeb
-        $badge->id_materi = $request->id_materi; // contoh penggunaan id_materi
-        $badge->id_posttest = $request->id_posttest; // contoh penggunaan id_posttest
+        $badge->id_user = 1; // !!!! hard code
+        $badge->id_materi = $request->id_materi;
+        $badge->id_posttest = $request->id_posttest;
 
         // Simpan data ke dalam database
         $badge->save();
@@ -87,15 +98,15 @@ class BadgeController extends Controller
     {
         // Find the badge by ID
         $badge = Badge::findOrFail($id);
-    
+
         // Delete the badge image from storage if it exists
         if ($badge->image) {
             Storage::delete('images/' . $badge->image);
         }
-    
+
         // Delete the badge
         $badge->delete();
-    
+
         // Redirect back with success message
         return redirect()->back()->with('success', 'Data badge berhasil dihapus!');
     }

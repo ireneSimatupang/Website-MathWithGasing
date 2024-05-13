@@ -58,7 +58,7 @@
               <tbody>
                 @php
                 $i=1;
-                @endphp
+                @endphp 
                 @foreach ($qPretest as $q)
                 <tr>
                   <td>{{$i}}</td>

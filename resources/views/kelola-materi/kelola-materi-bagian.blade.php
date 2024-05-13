@@ -32,11 +32,11 @@
                 <div class="tambah-data pb-3 mt-2 fw-bold mx-1 mb-3 mt-1 justify-content-start">
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         Tambah Data </button>
-                    <a href="/KelolaPengguna/KelolaUnit" class="btn btn-secondary mx-4">Kelola Level Bonus</a>
+                    <a href="/kelola-level-bonus/{{$id_materi}}" class="btn btn-secondary mx-4">Kelola Level Bonus</a>
 
                 </div>
 
-                <div class="card mb-4">
+                <div class="card mb-4"> 
 
                     <div class="card-body">
                         <table id="datatablesSimple">

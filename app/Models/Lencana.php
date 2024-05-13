@@ -18,6 +18,6 @@ class Lencana extends Model
 
     public function badge()
     {
-        return $this->hasMany(Badge::class, 'id_LencanaPengguna', 'id_badge');
+        return $this->belongsTo(Badge::class, 'id_badge');
     }
 }

@@ -25,7 +25,10 @@ class ScorePostTestController extends Controller
             $user->save(); // Save the user model
         }
 
-        return view('pencapaian-siswa.kelola-pencapaian', compact('users')); // Return the view with users data
+        $userLencana = User::where('id_user', $user->id_user)->count();
+
+  
+        return view('pencapaian-siswa.kelola-pencapaian', compact('users', 'userLencana')); // Return the view with users data
     }
 
 

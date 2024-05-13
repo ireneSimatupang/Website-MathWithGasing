@@ -16,12 +16,14 @@ class Badge extends Model
     public $timestamps = false;
 
     public function lencana() {
-        return $this->belongsTo(Lencana::class, 'id_LencanaPengguna');
+        return $this->hasMany(Lencana::class,'id_badge' ,'id_LencanaPengguna');
     }
-    public function badge() {
-        return $this->belongsTo(Badge::class, 'id_badge');
-    }
+
     public function materi() {
         return $this->belongsTo(Materi::class, 'id_materi');
+    }
+
+    public function user() {
+        return $this->belongsTo(User::class, 'id_user');
     }
 }

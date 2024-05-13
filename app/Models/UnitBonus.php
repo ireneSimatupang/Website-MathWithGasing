@@ -15,8 +15,14 @@ class UnitBonus extends Model
     public $timestamps = false;
 
     public function materi() {
-        return $this->belongsTo(Materi::class, 'id_materi', 'id_statistic');
+        return $this->belongsTo(Materi::class, 'id_materi');
     }
+
+    public function levelBonus() {
+        return $this->hasMany(LevelBonus::class, 'id_unit_Bonus', 'id_level_bonus');
+    }
+
+
 
 
 }

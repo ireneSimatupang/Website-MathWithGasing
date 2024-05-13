@@ -42,7 +42,7 @@
                 </form>
                 <button class="btn btn-danger delete" onclick="confirmDelete()">Hapus</button>
               </div><br>
-            </div>
+            </div> 
             @php $rowCount++; @endphp
             @if($rowCount % 3 == 0)
           </div>
@@ -84,9 +84,9 @@
             <input type="file" class="form-control" id="lencana" name="lencana">
           </div>
 
-          <input type="hidden" id="id_materi" name="id_materi" value="{{$materi->id_materi}}">
+          <input type="hidden" id="id_materi" name="id_materi" value="{{$id_materi}}">
 
-          <input type="hidden" id="id_posttest" name="id_posttest" value="{{$posttest->id_posttest}}">
+          <input type="hidden" id="id_posttest" name="id_posttest" value="{{$materiPostTest->id_posttest}}">
 
           <div class="d-flex justify-content-end py-3">
             <button class="btn btn-success mx-3" type="submit">Simpan</button>

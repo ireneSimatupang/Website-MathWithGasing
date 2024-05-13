@@ -32,4 +32,14 @@ class User extends Model
     {
         return $this->hasMany(Lencana::class, 'id_user', 'id_LencanaPengguna');
     }
+
+    public function badge()
+    {
+        return $this->hasMany(Badge::class, 'id_user', 'id_badge');
+    }
+
+    public function lencanaCount()
+    {
+      return $this->lencana()->count();
+    }
 }
