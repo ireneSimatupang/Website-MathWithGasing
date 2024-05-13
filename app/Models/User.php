@@ -30,7 +30,7 @@ class User extends Model
 
     public function lencana()
     {
-        return $this->hasMany(Lencana::class, 'id_user', 'id_LencanaPengguna');
+        return $this->hasMany(Lencana::class, 'id_user', 'id_user');
     }
 
     public function badge()

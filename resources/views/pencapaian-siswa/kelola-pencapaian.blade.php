@@ -48,7 +48,7 @@
                                     <td>{{ $index + 1 }}</td>
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->total_score ?? '-' }}</td> <!-- Mengambil skor post-test dengan relasi -->
-                                    <td>{{ $userLencana }}</td>
+                                    <td>{{ $userLencana[$user->id_user] }}</td>
                                 </tr>
                                 @endforeach
                             </tbody>

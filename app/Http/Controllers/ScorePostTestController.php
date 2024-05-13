@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Lencana;
 use App\Models\ScorePostTest;
 use Illuminate\Http\Request;
 
@@ -16,19 +17,24 @@ class ScorePostTestController extends Controller
      */
     public function index()
     {
-        $users = User::all(); // Get all users
+        $users = User::with('Lencana')->where('status', '1')->get(); 
 
         // Loop through each user to calculate and store the total score
         foreach ($users as $user) {
-            $totalScore = ScorePostTest::where("id_user", $user->id_user)->sum('score');
-            $user->total_score = $totalScore; // Add total score as a new attribute to the user
-            $user->save(); // Save the user model
+          $totalScore = ScorePostTest::where("id_user", $user->id_user)->sum('score');
+          $user->total_score = $totalScore; // Add total score as a new attribute to the user
+          $user->save(); // Save the user model
         }
 
-        $userLencana = User::where('id_user', $user->id_user)->count();
 
-  
-        return view('pencapaian-siswa.kelola-pencapaian', compact('users', 'userLencana')); // Return the view with users data
+        $userLencana = [];
+        foreach ($users as $user) {
+          $userLencana[$user->id_user] = $user->lencana->count();
+        }
+
+        
+      
+        return view('pencapaian-siswa.kelola-pencapaian', compact('users', 'userLencana'));
     }
 
 

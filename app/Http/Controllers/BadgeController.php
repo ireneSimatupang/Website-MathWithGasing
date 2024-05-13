@@ -13,10 +13,7 @@ class BadgeController extends Controller
 {
     public function manageBadge(Request $request, $id)
     {
-
-
         $id_materi = $request->route('id');
-
 
         $badges =  Materi::where('materi.id_materi', $id_materi)
             ->join('badge', 'materi.id_materi', '=', 'badge.id_materi')
@@ -49,8 +46,7 @@ class BadgeController extends Controller
         $imageName = time() . '.' . $request->lencana->extension();
         $request->lencana->move(public_path('images'), $imageName);
         $badge->image = $imageName;
-
-        $badge->id_user = 1; // !!!! hard code
+        
         $badge->id_materi = $request->id_materi;
         $badge->id_posttest = $request->id_posttest;
 
