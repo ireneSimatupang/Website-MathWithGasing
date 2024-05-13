@@ -7,21 +7,37 @@ var ctx = document.getElementById("myAreaChart");
 var myLineChart = new Chart(ctx, {
   type: 'line',
   data: {
-    labels: ["Mar 1", "Mar 2", "Mar 3", "Mar 4", "Mar 5", "Mar 6", "Mar 7", "Mar 8", "Mar 9", "Mar 10", "Mar 11", "Mar 12", "Mar 13"],
-    datasets: [{
-      label: "Sessions",
-      lineTension: 0.3,
-      backgroundColor: "rgba(2,117,216,0.2)",
-      borderColor: "rgba(2,117,216,1)",
-      pointRadius: 5,
-      pointBackgroundColor: "rgba(2,117,216,1)",
-      pointBorderColor: "rgba(255,255,255,0.8)",
-      pointHoverRadius: 5,
-      pointHoverBackgroundColor: "rgba(2,117,216,1)",
-      pointHitRadius: 50,
-      pointBorderWidth: 2,
-      data: [10000, 30162, 26263, 18394, 18287, 28682, 31274, 33259, 25849, 24159, 32651, 31984, 38451],
-    }],
+    labels: ["PENJUMLAHAN", "PENGURANGAN", "PERKALIAN", "PEMBAGIAN"],
+    datasets: [
+      {
+        label: "PRE-TEST",
+        lineTension: 0.3,
+        backgroundColor: "rgba(255, 99, 132, 0.2)", // Adjust color as needed
+        borderColor: "rgba(255, 99, 132, 1)", // Adjust color as needed
+        pointRadius: 5,
+        pointBackgroundColor: "rgba(255, 99, 132, 1)", // Adjust color as needed
+        pointBorderColor: "rgba(255,255,255,0.8)",
+        pointHoverRadius: 5,
+        pointHoverBackgroundColor: "rgba(255, 99, 132, 1)", // Adjust color as needed
+        pointHitRadius: 50,
+        pointBorderWidth: 2,
+        data: [40, 60, 75, 65] // Replace with your pretest data
+      },
+      {
+        label: "POST-TEST",
+        lineTension: 0.3,
+        backgroundColor: "rgba(54, 162, 235, 0.2)", // Adjust color as needed
+        borderColor: "rgba(54, 162, 235, 1)", // Adjust color as needed
+        pointRadius: 5,
+        pointBackgroundColor: "rgba(54, 162, 235, 1)", // Adjust color as needed
+        pointBorderColor: "rgba(255,255,255,0.8)",
+        pointHoverRadius: 5,
+        pointHoverBackgroundColor: "rgba(54, 162, 235, 1)", // Adjust color as needed
+        pointHitRadius: 50,
+        pointBorderWidth: 2,
+        data: [90, 80, 100, 80] // Replace with your postest data
+      }
+    ],
   },
   options: {
     scales: {
@@ -39,7 +55,7 @@ var myLineChart = new Chart(ctx, {
       yAxes: [{
         ticks: {
           min: 0,
-          max: 40000,
+          max: 100,
           maxTicksLimit: 5
         },
         gridLines: {
