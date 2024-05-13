@@ -10,7 +10,7 @@ use Illuminate\Notifications\Notifiable;
 class Admin extends Authenticatable
 {
     use HasFactory, HasFactory, Notifiable;
-    protected $table = 'users';
+    protected $table = 'admin';
     protected $primaryKey = 'id_penggunaWeb';
     public $incrementing = false;
     protected $fillable = [

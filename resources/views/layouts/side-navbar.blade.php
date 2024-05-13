@@ -8,6 +8,7 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-home"></i></div>
                     BERANDA
                 </a>
+                @if(Auth::user()->role_id == '2')
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                     <div class="sb-nav-link-icon"><i class="fas fa-user-friends"></i></div>
                     MENGELOLA AKUN
@@ -19,6 +20,7 @@
                         <a class="nav-link" href="/akun-admin"><i class="fas fa-user-shield"></i>&nbsp;AKUN ADMIN</a>
                     </nav>
                 </div>
+                @endif
                 <a class="nav-link" href="/kelola-materi">
                     <div class="sb-nav-link-icon"><i class="fas fa-book"></i></div>
                     MENGELOLA MATERI

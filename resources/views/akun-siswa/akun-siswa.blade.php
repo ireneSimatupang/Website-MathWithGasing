@@ -58,6 +58,13 @@
 
                 <h2 class="pb-3">Kelola Akun Siswa</h2>
 
+                @if (session('success'))
+                <div class="alert alert-success alert-dismissible fade show pt-4" role="alert">
+                    {{ session('success') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                @endif
+
 
                 <div class="card mb-4">
                     <div class="card-body">

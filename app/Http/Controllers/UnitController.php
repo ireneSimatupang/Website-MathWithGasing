@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\unit;
+use App\Models\Materi;
 use App\Models\UnitBonus;
 
 class UnitController extends Controller
@@ -12,9 +13,11 @@ class UnitController extends Controller
     {
         $id_materi = $request->route('id');
 
+        $materi = Materi::where('id_materi',$id_materi)->first();
+
         $unit = unit::where('id_materi', $id)->get();
 
-        return view('kelola-materi.kelola-materi-bagian', compact('unit', 'id_materi'));
+        return view('kelola-materi.kelola-materi-bagian', compact('unit', 'id_materi', 'materi'));
     }
 
     public function tambahUnit(Request $request, $id)

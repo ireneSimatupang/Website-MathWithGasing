@@ -16,7 +16,7 @@
                         <i class="fas fa-home pt-1"></i>&nbsp;
                         <a href="/beranda" style="text-decoration: none; color: inherit;">Beranda /</a>
                         <a href="/kelola-materi" style="text-decoration: none; color: inherit;">Kelola Materi /</a>
-                        <a href="/kelola-materi-bagian" style="text-decoration: none; color: inherit;">Penjumlahan</a>
+                        <a href="/kelola-materi-bagian/{{$id_materi}}" style="text-decoration: none; color: inherit;">{{$materi->title}}</a>
                     </div>
                 </div>
 

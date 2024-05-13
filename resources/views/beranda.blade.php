@@ -17,7 +17,7 @@
                     </div>
                 </div>
 
-                
+
                 <div class="row">
                     <?php $hari_ini = date('Y-m-d');  ?>
                     <div class="d-flex justify-content-start mb-2 mt-1 text-secondary">
@@ -28,46 +28,52 @@
                     </div>
 
                     <div class="col-xl-4 col-md-6">
-                        <div class="card bg-success text-white mb-4">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <i class="fa-solid fa-user fa-6x"></i>
-                                    </div>
-                                    <div class="col-md-6 pt-3">
-                                        <h3>{{$siswa}} Siswa Terdaftar</h3>
+                        <a href="/akun-siswa" style="color: inherit; text-decoration: none;">
+                            <div class="card bg-success text-white mb-4">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <i class="fa-solid fa-user fa-6x"></i>
+                                        </div>
+                                        <div class="col-md-6 pt-3">
+                                            <h3>{{$siswa}} Siswa Terdaftar</h3>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                     <div class="col-xl-4 col-md-6">
-                        <div class="card bg-primary text-white mb-4">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <i class="fa-solid fa-user-shield fa-6x"></i>
-                                    </div>
-                                    <div class="col-md-6 pt-3">
-                                        <h3>{{$admin}} Admin Terdaftar</h3>
+                        <a href="/akun-admin" style="color: inherit; text-decoration: none;">
+                            <div class="card bg-primary text-white mb-4">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <i class="fa-solid fa-user-shield fa-6x"></i>
+                                        </div>
+                                        <div class="col-md-6 pt-3">
+                                            <h3>{{$admin}} Admin Terdaftar</h3>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                     <div class="col-xl-4 col-md-6">
-                        <div class="card bg-warning text-white mb-4">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <i class="fa-solid fa-book-bookmark fa-6x"></i>
-                                    </div>
-                                    <div class="col-md-6 pt-3">
-                                        <h3>{{$materi}} Topik Materi</h3>
+                        <a href="/kelola-materi" style="color: inherit; text-decoration: none;">
+                            <div class="card bg-warning text-white mb-4">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <i class="fa-solid fa-book-bookmark fa-6x"></i>
+                                        </div>
+                                        <div class="col-md-6 pt-3">
+                                            <h3>{{$materi}} Topik Materi</h3>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 </div>
                 <div class="row">
@@ -108,7 +114,6 @@
 {
     if ($date != '0000-00-00') {
         $date = explode('-', $date);
-
         $data = $date[2] . ' ' . bulan($date[1]) . ' ' . $date[0];
     } else {
         $data = 'Format tanggal salah';
