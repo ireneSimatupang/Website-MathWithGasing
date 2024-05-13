@@ -66,7 +66,7 @@
                                 {{ __('Login') }}
                             </button>
                             <p style="font-size:0.85em;color:#797979;margin-top:15px">Belum Punya akun admin?</p>
-                            <a style="font-size:0.8em;color:#1469B8; text-decoration:none;margin-top:-13px" href="{{ route('register') }}">Daftar Disini</a>
+                            <a style="font-size:0.8em;color:#1469B8; text-decoration:none;margin-top:-13px" href="/register">Daftar Disini</a>
                         </div> 
                     </form>
                 </div>
